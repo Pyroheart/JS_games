@@ -135,10 +135,10 @@ function restart() {
       initPieces(3, 3);
       break;
     case 'medium':
-      initPieces(4, 4);
+      initPieces(6, 6);
       break;
     case 'hard':
-      initPieces(5, 5);
+      initPieces(9, 9);
       break;
   }
 }
