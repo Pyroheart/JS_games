@@ -24,7 +24,7 @@ checkEarly.addEventListener('click', (event) => {
     }
   } 
   else {
-      img.src = 'images/puzzle.jpg';
+      img.src = 'images/puzzle3.jpg';
       //Wait for the picture to be fully loaded in order not to have a double cclick to reload the image.
       img.addEventListener('load', () => {
         drawPieces();
@@ -38,7 +38,7 @@ function initPieces(rows, cols) {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // clear the canvas
   pieces = []; // reset the pieces array
   const img = new Image();
-  img.src = 'images/puzzle.jpg';
+  img.src = 'images/puzzle3.jpg';
 
   img.addEventListener('load', () => {
     const aspectRatio = img.naturalWidth / img.naturalHeight;
