@@ -230,9 +230,9 @@ canvas.addEventListener('mouseup', e => {
       end = new Date();
       const time = (end - start) / 60000;
       if (time < 1){
-        const secondTime = (end - start) / 10000;
+        const secondTime = (end - start) / 1000;
         const roundedSecondTime = parseFloat(secondTime.toFixed(1));
-        alert(`Congratulations! You solved the puzzle in ${secondTime} seconds.`);
+        alert(`Congratulations! You solved the puzzle in ${roundedSecondTime} seconds.`);
       } else {
       const roundedTime = parseFloat(time.toFixed(1));
       alert(`Congratulations! You solved the puzzle in ${roundedTime} minutes.`);
