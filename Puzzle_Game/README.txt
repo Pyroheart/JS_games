@@ -8,6 +8,7 @@ The puzzle works in itself but here are improvement that need to be done :
 2 - The shuffle must be really random, that is to say, link each pieces to the puzzled image drawn
 -> Pieces are now  randomly shuffling and also scaling
 
+2.5 => Touch movements for mobile
 
 ///////////////////// to the organization / global improvements /////////////////////
 3 - Add a carrousel to the  site on the right in order to choose pre-chosen pictures / add yours
