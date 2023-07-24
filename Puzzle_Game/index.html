@@ -6,23 +6,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jigsaw Puzzle Game</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js" integrity="sha512-+Ru50BzEpZjlFzVnjSmJfYFPFfY2hS0Kjlu/IvqaJoux7maF5lJrRVUJWJ2LevPls7rd242GLbWEt+zAo4OVVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <!-- <link rel="stylesheet" href="css.css"> -->
+        <link rel="stylesheet" href="css.css">
     </head>
 
     <body>
-        <h2>Starting time: <span id="start">0</span></h2>
-        <canvas id="canvas" width="600" height="400"></canvas>
+        <h2><span id="start"></span></h2>
+
+        <input type="file" id="file-input">
+
+        <canvas id="mycanvas" width="1000" height="600">Your browser does not support canvas element.</canvas>
+
+        <canvas id="canvas" width="1000" height="600">Your browser does not support canvas element.</canvas>
 
         <label for="difficulty">Difficulty:</label>
         <select id="difficulty">
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
+        <option value="testFlemm">test</option>
         </select>
-        
-        <div>reminder caroussel on the right with pictures</div>
 
-        <button onclick="restart()">Start Game</button>
+        <button id="ReStart">Start Game</button>
 
         <script src="js/puzzle.js"></script>
     </body>
