@@ -12,22 +12,53 @@
     <body>
         <h2><span id="start"></span></h2>
 
-        <input type="file" id="file-input">
-
-        <canvas id="mycanvas" width="1000" height="600">Your browser does not support canvas element.</canvas>
-
         <canvas id="canvas" width="1000" height="600">Your browser does not support canvas element.</canvas>
 
-        <label for="difficulty">Difficulty:</label>
-        <select id="difficulty">
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-        <option value="testFlemm">test</option>
-        </select>
+        <div class="options">
+            <label for="file-input">Add a picture of your own :</label>
+            <input type="file" id="file-input">
 
-        <button id="ReStart">Start Game</button>
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="testFlemm">test</option>
+            </select>
+            
 
+            <button id="ReStart">Start Game</button>
+         </div>
+        
+
+        <div class="ProblemFixes">
+            <h2>Problem log and fixes</h2>
+            <div class="problem">
+                <h3 class="problemTitle">#1 add random among pieces</h3>
+                <p class="problemSolved">mathrandom in the pieces x and y</p>
+            </div>
+            <div class="problem">
+                <h3 class="problemTitle">#2 needed my pieces to actutally have random images</h3>
+                <p class="problemSolved">bound an img to each pieces</p>
+            </div>
+            <div class="problem">
+                <h3 class="problemTitle">#3 needed my image to scale up or down </h3>
+                <p class="problemSolved">img.onload with maths inside according to the size of my canvas</p>
+            </div>
+            <div class="problem">
+                <h3 class="problemTitle">#4 needed to export the new sized picture out of the onload</h3>
+                <p class="problemSolved">it was a pain but I found nothing else than callback or promises</p>
+            </div>
+            <div class="problem">
+                <h3 class="problemTitle">#5 When changing the picture it wasn't taking the new Width properly into consideration</h3>
+                <p class="problemSolved"> call "restart" with the newHeight, newWidth, and img objects after the image has finished loading. This ensures that the newHeight and newWidth values are correctly set and used in the restart function.</p>
+            </div>
+            <div class="problem">
+                <h3 class="problemTitle">#6 Image not actually being fully loaded on the first click</h3>
+                <p class="problemSolved">very short setTimeout() of the drawn pieces after the initialization of the pieces is done</p>
+            </div>
+        </div>
+        
         <script src="js/puzzle.js"></script>
     </body>
 </html>
