@@ -128,13 +128,16 @@ for (const block of blocks) {
         otherBlock !== block &&
         (otherBlock.value === 0 || otherBlock.value === 3 || otherBlock.value === 2)
       ) {
+		  //et si direction bas gauche droite haute et lastdirection ?
         if (
-          block.x < otherBlock.x + 32 &&
-          block.x + 32 > otherBlock.x &&
-          block.y < otherBlock.y + 32 &&
-          block.y + 32 > otherBlock.y
+          block.x < otherBlock.x + 34 && //left
+		  block.y < otherBlock.y + 34 && //down
+          block.x + 34 > otherBlock.x && //right
+          block.y + 34 > otherBlock.y //up
         ) {
           block.direction = null;
+          canMove = false;
+          block.prevBlockPos = { x: block.x, y: block.y }; // Store previous position
           break;
         }
       }
@@ -154,6 +157,9 @@ for (const block of blocks) {
           block.x += player.speed ;
           break;
       }
+    } else {
+      block.x = block.prevBlockPos.x; // Move block back to previous position
+      block.y = block.prevBlockPos.y;
     }
   }
 }
