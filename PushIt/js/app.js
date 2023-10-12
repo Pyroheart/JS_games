@@ -118,51 +118,70 @@ function gameLoop() {
     }
   }
 
-// Update the position of the block based on its direction
-for (const block of blocks) {
-  if (block.value === 2 && block.direction) {
-    // Check for collision with other blocks
-    let canMove = true;
-    for (const otherBlock of blocks) {
-      if (
-        otherBlock !== block &&
-        (otherBlock.value === 0 || otherBlock.value === 3 || otherBlock.value === 2)
-      ) {
-		  //et si direction bas gauche droite haute et lastdirection ?
-        if (
-          block.x < otherBlock.x + 34 && //left
-		  block.y < otherBlock.y + 34 && //down
-          block.x + 34 > otherBlock.x && //right
-          block.y + 34 > otherBlock.y //up
-        ) {
-          block.direction = null;
-          canMove = false;
-          block.prevBlockPos = { x: block.x, y: block.y }; // Store previous position
-          break;
-        }
-      }
-    }
-    if (canMove) {
+  // Update the position of the block based on its direction
+  for (const block of blocks) {
+    if (block.value === 2 && block.direction) {
+      // Calculate the next position of the block based on its direction
+      let nextX = block.x;
+      let nextY = block.y;
       switch (block.direction) {
         case 'up':
-          block.y -= player.speed;
+          nextY -= player.speed;
           break;
         case 'down':
-          block.y += player.speed;
+          nextY += player.speed;
           break;
         case 'left':
-          block.x -= player.speed;
+          nextX -= player.speed;
           break;
         case 'right':
-          block.x += player.speed ;
+          nextX += player.speed;
           break;
       }
-    } else {
-      block.x = block.prevBlockPos.x; // Move block back to previous position
-      block.y = block.prevBlockPos.y;
+  
+      // Check if the next position of the block will collide with another block
+      let canMove = true;
+      for (const otherBlock of blocks) {
+        if (
+          otherBlock !== block && (otherBlock.value === 0 || otherBlock.value === 3 || otherBlock.value === 2)
+        ) {
+          if (
+            nextX < otherBlock.x + 32 &&
+            nextX + 32 > otherBlock.x &&
+            nextY < otherBlock.y + 32 &&
+            nextY + 32 > otherBlock.y
+          ) {
+            canMove = false;
+            break;
+          }
+        }
+      }
+  
+      // Update the position of the block if it can move
+      if (canMove) {
+        block.x = nextX;
+        block.y = nextY;
+      } else {
+        // If there is a collision, stop the block just before it but still able to be pushed in other directions
+        switch (block.direction) {
+          case 'up':
+            block.y = Math.floor((block.y - player.speed) / 32) * 32 + 32;
+            break;
+          case 'down':
+            block.y = Math.ceil((block.y + player.speed) / 32) * 32 - 32;
+            break;
+          case 'left':
+            block.x = Math.floor((block.x - player.speed) / 32) * 32 + 32;
+            break;
+          case 'right':
+            block.x = Math.ceil((block.x + player.speed) / 32) * 32 - 32;
+            break;
+        }
+        block.direction = null;
+      }
     }
   }
-}
+
 
 // Check for collision with blocks of value 2
 for (const block of blocks) {
