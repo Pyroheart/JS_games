@@ -1,0 +1,42 @@
+body {
+  max-height: 100vh;
+}
+
+.mazeContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+#maze {
+  display: grid;
+  /* grid-template-columns: repeat(5, 50px); */
+  /* grid-template-rows: repeat(5, 50px); */
+  gap: 1px;
+  width: 80vw;
+  height: 80vh;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  border: 1px solid #fff;
+}
+
+.player {
+  background-color: #00f;
+}
+
+.enemy {
+  background-color: #f00;
+}
+
+.hunterEnemy {
+	backgrund-color: #f80;
+}
+
+.wall {
+  background-color: #000;
+}
